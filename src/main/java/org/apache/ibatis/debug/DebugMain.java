@@ -14,9 +14,12 @@ import java.io.InputStream;
 public class DebugMain {
 
     public static void main(String[] args) throws Exception {
+        // 加载配置文件
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
+        // 读取配置文件，构建 Configuration
         //从 XML 中构建 SqlSessionFactory
+        // DefaultSqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
         SqlSession session = sqlSessionFactory.openSession();
