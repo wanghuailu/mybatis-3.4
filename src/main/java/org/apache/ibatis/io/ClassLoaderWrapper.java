@@ -75,6 +75,7 @@ public class ClassLoaderWrapper {
    * @return the stream or null
    */
   public InputStream getResourceAsStream(String resource, ClassLoader classLoader) {
+    // 获取 classLoader[]
     return getResourceAsStream(resource, getClassLoaders(classLoader));
   }
 
@@ -202,6 +203,9 @@ public class ClassLoaderWrapper {
   }
 
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
+    // 创建一个 classLoader数组
+    // 一般 classLoader = null, defaultClassLoader 默认值也是null
+    // 剩下三个一般都是 AppClassLoader
     return new ClassLoader[]{
         classLoader,
         defaultClassLoader,
