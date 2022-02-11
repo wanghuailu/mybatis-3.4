@@ -4,6 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <!-- configuration 的加载顺序 -->
+    <!--    properties -> settings -> typeAliases -> typeHandlers -> objectFactory -> objectWrapperFactory ->
+            reflectorFactory -> plugins -> environments -> databaseIdProvider -> mappers
+    -->
+
+
     <!-- 设置参数 -->
     <settings>
         <!-- 开启驼峰匹配：完成经典的数据库命名到java属性的映射
