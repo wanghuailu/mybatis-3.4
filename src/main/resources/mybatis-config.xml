@@ -23,7 +23,12 @@
         <environment id="development">
             <!-- 事务管理器，type:使用jdbc的事务管理器 -->
             <transactionManager type="JDBC"/>
+
             <!-- 数据源，type:池类型的数据源 -->
+            <!-- UNPOOLED：每次请求都打开和关闭链接
+                 POOLED：链接池
+                 JNDI：为了能在如 EJB 或应⽤服务器这类容器中使用，容器可以集中或在外部配置数据源，然后放置⼀个 JNDI 上下文的引用
+            -->
             <dataSource type="POOLED">
                 <!-- 配置连接信息 -->
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>

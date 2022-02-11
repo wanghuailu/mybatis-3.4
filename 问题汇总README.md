@@ -1,4 +1,4 @@
-1、修改配置信息为jdk8、
+1、修改配置信息为jdk8
     File -> Project Structure -> Project Settings -> Project
     File -> Project Structure -> Project Settings -> Modules -> （需要修改的工程名称） -> Sources -> Language Level 
     File -> Setting -> Build,Execution,Deployment -> Compiler -> Java Compiler
