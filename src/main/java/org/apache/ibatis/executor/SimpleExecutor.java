@@ -33,6 +33,9 @@ import java.util.List;
 
 /**
  * @author Clinton Begin
+ *
+ * 普通的执行期，默认
+ *
  */
 public class SimpleExecutor extends BaseExecutor {
 
@@ -58,10 +61,17 @@ public class SimpleExecutor extends BaseExecutor {
     Statement stmt = null;
     try {
       Configuration configuration = ms.getConfiguration();
+
+      // 传入参数创建 StatementHandler 对象来执行查询
       StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
+
+      // 创建 jdbc Statement
       stmt = prepareStatement(handler, ms.getStatementLog());
+
+      // 调用执行 StatementHandler
       return handler.<E>query(stmt, resultHandler);
     } finally {
+      // 关闭 statement
       closeStatement(stmt);
     }
   }
@@ -83,8 +93,10 @@ public class SimpleExecutor extends BaseExecutor {
     Statement stmt;
     // 获取连接信息
     Connection connection = getConnection(statementLog);
-    // 创建 Statement
+    // 创建 Statement 或者 prepareStatement
     stmt = handler.prepare(connection, transaction.getTimeout());
+
+    // 设置 SQL 上的参数，例如 prepareStatement 的占位符
     handler.parameterize(stmt);
     return stmt;
   }

@@ -110,17 +110,21 @@ public class ClassLoaderWrapper {
    * @return the resource or null
    */
   InputStream getResourceAsStream(String resource, ClassLoader[] classLoader) {
+    // 遍历类加载器
     for (ClassLoader cl : classLoader) {
       if (null != cl) {
 
         // try to find the resource as passed
+        // 获取 inputStream，不带/
         InputStream returnValue = cl.getResourceAsStream(resource);
 
         // now, some class loaders want this leading "/", so we'll add it and try again if we didn't find the resource
         if (null == returnValue) {
+          // 获取 inputStream，带/
           returnValue = cl.getResourceAsStream("/" + resource);
         }
 
+        // 返回 inputStream
         if (null != returnValue) {
           return returnValue;
         }

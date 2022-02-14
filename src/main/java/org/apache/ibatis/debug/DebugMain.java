@@ -20,6 +20,7 @@ public class DebugMain {
         // 读取配置文件，构建 Configuration
         // 从 XML 中构建 SqlSessionFactory
         // DefaultSqlSessionFactory
+        // 构建者模式
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
         // 默认开启一个事务，但是不会自动提交该事务

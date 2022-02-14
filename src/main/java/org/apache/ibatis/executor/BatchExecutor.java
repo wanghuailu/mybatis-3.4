@@ -36,7 +36,10 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.Transaction;
 
 /**
- * @author Jeff Butler 
+ * @author Jeff Butler
+ *
+ * 重用语句并执行批量更新
+ *
  */
 public class BatchExecutor extends BaseExecutor {
 

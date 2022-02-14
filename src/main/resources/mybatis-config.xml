@@ -15,6 +15,9 @@
         <!-- 开启驼峰匹配：完成经典的数据库命名到java属性的映射
              相当于去掉数据中的名字的下划线，和java进行匹配 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- 配置别名 -->
