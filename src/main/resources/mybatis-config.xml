@@ -16,7 +16,7 @@
              相当于去掉数据中的名字的下划线，和java进行匹配 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
 
-        <!-- 开启二级缓存 -->
+        <!-- 开启全局的二级缓存配置   全局性的开启或关闭所有映射器配置文件中已配置的任何缓存，默认：true -->
         <setting name="cacheEnabled" value="true"/>
     </settings>
 
