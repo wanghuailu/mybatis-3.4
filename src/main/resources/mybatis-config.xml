@@ -26,6 +26,12 @@
         <typeAlias type="org.apache.ibatis.debug.User" alias="User"/>
     </typeAliases>
 
+    <!-- 设置 pageHelper 分页插件 -->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+        </plugin>
+    </plugins>
+
     <!-- 配置环境：可以配置多个环境，default：配置某一个环境的唯一标识，表示默认使用哪个环境 -->
     <environments default="development">
         <!-- 配置环境,id:环境的唯一标识 -->

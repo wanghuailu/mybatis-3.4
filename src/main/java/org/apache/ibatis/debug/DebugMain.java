@@ -1,5 +1,6 @@
 package org.apache.ibatis.debug;
 
+import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -31,6 +32,8 @@ public class DebugMain {
         // mybatis 代理方式实现 DAO 层的开发
         // 使用 JDK 动态代理对 mapper 接口产生代理对象
         UserMapper mapper = session.getMapper(UserMapper.class);
+
+        PageHelper.offsetPage(0, 10);
 
         // 如何匹配到 xml
         // xml 配置了 namespace，这个需要跟类的全路径限定名一致
