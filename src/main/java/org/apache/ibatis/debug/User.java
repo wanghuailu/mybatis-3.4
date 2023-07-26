@@ -14,6 +14,8 @@ public class User implements Serializable {
 
     private String name;
 
+    private int age;
+
 
     public User() {
     }
@@ -34,11 +36,20 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 '}';
     }
 }

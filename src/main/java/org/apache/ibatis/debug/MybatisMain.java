@@ -12,7 +12,7 @@ import java.io.InputStream;
  * @author kenny
  * @date 2022-01-11
  */
-public class DebugMain {
+public class MybatisMain {
 
     public static void main(String[] args) throws Exception {
         // 加载配置文件
@@ -43,7 +43,9 @@ public class DebugMain {
         User user = mapper.select(1L);
         System.out.println(user);
 
-        session.commit();
+        mapper.update(1L, user.getAge() + 1);
+
+//        session.commit();
 
         // 查询第二次，验证缓存
         user = mapper.select(1L);
