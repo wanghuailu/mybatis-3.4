@@ -5,6 +5,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.io.InputStream;
 
@@ -13,8 +15,11 @@ import java.io.InputStream;
  * @date 2022-01-11
  */
 public class MybatisMain {
+    private static final Logger logger = Logger.getLogger(MybatisMain.class);
 
     public static void main(String[] args) throws Exception {
+        logger.setLevel(Level.DEBUG);
+
         // 加载配置文件
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
@@ -43,11 +48,25 @@ public class MybatisMain {
         User user = mapper.select(1L);
         System.out.println(user);
 
+        // 验证一级缓存，相同的查询之间没有进行 update、delete、insert 操作，就不会进行二次查询数据库，会从一级缓存中取数据
+        // 一级缓存，sqlSession 级别的
+        user = mapper.select(1L);
+        System.out.println(user);
+
+        user = mapper.select(1L);
+        System.out.println(user);
+
         mapper.update(1L, user.getAge() + 1);
 
-//        session.commit();
+        session.commit();
 
-        // 查询第二次，验证缓存
+        // 验证二级缓存，如果没有进行commit，就不会进行二次查询数据库，会从二级缓存中取数据
+        user = mapper.select(1L);
+        System.out.println(user);
+        session.close();
+
+        session = sqlSessionFactory.openSession();
+        mapper = session.getMapper(UserMapper.class);
         user = mapper.select(1L);
         System.out.println(user);
 
